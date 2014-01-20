@@ -1,0 +1,32 @@
+{
+  "name": "lineman-lib",
+  "title": "A plugin for publishing JavaScript libs with Lineman",
+  "version": "0.0.1",
+  "homepage": "https://github.com/testdouble/lineman-lib",
+  "author": {
+    "name": "Justin Searls",
+    "company": "Test Double"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/testdouble/lineman-lib.git"
+  },
+  "main": "main.js",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-write-bower-json": "~ 0.0.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "coffee-script": "~1.6.3"
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "lineman": ">= 0.23.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://mit-license.org"
+    }
+  ]
+}
