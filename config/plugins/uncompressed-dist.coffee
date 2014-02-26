@@ -17,7 +17,7 @@ module.exports = (lineman) ->
     meta:
       banner: """
               /* <%= pkg.name %> - <%= pkg.version %>
-               * <%= pkg.description || pkg.description %>
+               * <%= pkg.description %>
                * <%= pkg.homepage %>
                */
 
@@ -53,4 +53,3 @@ module.exports = (lineman) ->
     js:
       minified: "dist/#{grunt.file.readJSON('package.json').name}.min.js"
       uncompressedDist: "dist/#{grunt.file.readJSON('package.json').name}.js"
-
