@@ -1,6 +1,6 @@
 {
   "name": "lineman-lib",
-  "title": "A plugin for publishing JavaScript libs with Lineman",
+  "description": "A plugin for publishing JavaScript libs with Lineman",
   "version": "0.0.1",
   "homepage": "https://github.com/linemanjs/lineman-lib",
   "author": {
