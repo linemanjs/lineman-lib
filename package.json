@@ -11,7 +11,6 @@
     "type": "git",
     "url": "git://github.com/linemanjs/lineman-lib.git"
   },
-  "main": "main.js",
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-write-bower-json": "~ 0.0.1",
