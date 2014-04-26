@@ -1,10 +1,12 @@
 path = require('path')
-libConfig = require(path.join(process.cwd(), 'config', 'lib'))
+_ = require('underscore')
 
 module.exports = (lineman) ->
   grunt = lineman.grunt
-  _ = grunt.util._
+  warnIfDeprecatedLibConfigStillExists(grunt)
   app = lineman.config.application
+  userLibConfig = require(path.join(process.cwd(), 'config', 'application'))(lineman)?.plugins?.lib
+  libConfig = _(generateBowerJson: true, includeVendorInDistribution: false).extend(userLibConfig)
 
   bowerTasks = if libConfig.generateBowerJson then "writeBowerJson" else []
 
@@ -53,3 +55,20 @@ module.exports = (lineman) ->
     js:
       minified: "dist/#{grunt.file.readJSON('package.json').name}.min.js"
       uncompressedDist: "dist/#{grunt.file.readJSON('package.json').name}.js"
+
+
+warnIfDeprecatedLibConfigStillExists = (grunt) ->
+  try
+    libConfig = require(path.join(process.cwd(), 'config', 'lib'))
+    grunt.warn """
+      The `config/lib.{json,js,coffee}` file is deprecated in favor
+      of a normal lineman configuration property in `config/application.{js,coffee}`.
+      You can configure lineman-lib like so:
+
+      #{JSON.stringify({plugins: {lib: libConfig}}, null, '  ')}
+
+      Then delete your `config/lib.{json,js,coffee}` file.
+
+      """
+  catch e
+    # Excellent, it doesn't exist.
